@@ -5372,7 +5372,7 @@ function endBattle() {
 /* ===== חיבור לשרת (Supabase) =====
    כדי להפעיל: למלא כאן את הכתובת והמפתח הציבורי (anon) של הפרויקט, ולהריץ את הקובץ supabase_setup.sql.
    כל עוד השדות ריקים — האתר עובד במצב מקומי (כמו עכשיו), בלי שום שינוי נוסף. */
-const BACKEND = { url: 'https://xcfjzkwnlxaktjkslqhd.supabase.co', anonKey: 'sb_publishable_WZUJBKr_qJOj5k-B9m91Ww_nuDAFEl2' };
+const BACKEND = { url: '', anonKey: '' };
 function backendEnabled() { return !!(BACKEND.url && BACKEND.anonKey); }
 async function backendRpc(fn, args) {
   const res = await fetch(BACKEND.url.replace(/\/$/, '') + '/rest/v1/rpc/' + fn, {
@@ -5384,7 +5384,115 @@ async function backendRpc(fn, args) {
   return res.json();
 }
 
-const COUPONS = {}; // הקופונים נמצאים רק בשרת (טבלת coupons ב-Supabase) ולא בקובץ הזה.
+const COUPONS = {
+  // 30 קופונים: 50 כדורים
+  '45052': { type: 'points', amount: 50, label: '50 כדורים' },
+  '65516': { type: 'points', amount: 50, label: '50 כדורים' },
+  '32648': { type: 'points', amount: 50, label: '50 כדורים' },
+  '98394': { type: 'points', amount: 50, label: '50 כדורים' },
+  '41029': { type: 'points', amount: 50, label: '50 כדורים' },
+  '12575': { type: 'points', amount: 50, label: '50 כדורים' },
+  '41939': { type: 'points', amount: 50, label: '50 כדורים' },
+  '38772': { type: 'points', amount: 50, label: '50 כדורים' },
+  '37632': { type: 'points', amount: 50, label: '50 כדורים' },
+  '12161': { type: 'points', amount: 50, label: '50 כדורים' },
+  '55543': { type: 'points', amount: 50, label: '50 כדורים' },
+  '67156': { type: 'points', amount: 50, label: '50 כדורים' },
+  '17037': { type: 'points', amount: 50, label: '50 כדורים' },
+  '30620': { type: 'points', amount: 50, label: '50 כדורים' },
+  '83643': { type: 'points', amount: 50, label: '50 כדורים' },
+  '53215': { type: 'points', amount: 50, label: '50 כדורים' },
+  '77695': { type: 'points', amount: 50, label: '50 כדורים' },
+  '31095': { type: 'points', amount: 50, label: '50 כדורים' },
+  '30402': { type: 'points', amount: 50, label: '50 כדורים' },
+  '83220': { type: 'points', amount: 50, label: '50 כדורים' },
+  '52517': { type: 'points', amount: 50, label: '50 כדורים' },
+  '48653': { type: 'points', amount: 50, label: '50 כדורים' },
+  '57267': { type: 'points', amount: 50, label: '50 כדורים' },
+  '31416': { type: 'points', amount: 50, label: '50 כדורים' },
+  '57792': { type: 'points', amount: 50, label: '50 כדורים' },
+  '26434': { type: 'points', amount: 50, label: '50 כדורים' },
+  '36586': { type: 'points', amount: 50, label: '50 כדורים' },
+  '84070': { type: 'points', amount: 50, label: '50 כדורים' },
+  '37652': { type: 'points', amount: 50, label: '50 כדורים' },
+  '52612': { type: 'points', amount: 50, label: '50 כדורים' },
+  // 30 קופונים: 100 כדורים
+  '49995': { type: 'points', amount: 100, label: '100 כדורים' },
+  '99173': { type: 'points', amount: 100, label: '100 כדורים' },
+  '14897': { type: 'points', amount: 100, label: '100 כדורים' },
+  '15048': { type: 'points', amount: 100, label: '100 כדורים' },
+  '91559': { type: 'points', amount: 100, label: '100 כדורים' },
+  '90832': { type: 'points', amount: 100, label: '100 כדורים' },
+  '75142': { type: 'points', amount: 100, label: '100 כדורים' },
+  '80592': { type: 'points', amount: 100, label: '100 כדורים' },
+  '52016': { type: 'points', amount: 100, label: '100 כדורים' },
+  '31230': { type: 'points', amount: 100, label: '100 כדורים' },
+  '57743': { type: 'points', amount: 100, label: '100 כדורים' },
+  '89096': { type: 'points', amount: 100, label: '100 כדורים' },
+  '80446': { type: 'points', amount: 100, label: '100 כדורים' },
+  '44838': { type: 'points', amount: 100, label: '100 כדורים' },
+  '50604': { type: 'points', amount: 100, label: '100 כדורים' },
+  '92258': { type: 'points', amount: 100, label: '100 כדורים' },
+  '37755': { type: 'points', amount: 100, label: '100 כדורים' },
+  '45331': { type: 'points', amount: 100, label: '100 כדורים' },
+  '27350': { type: 'points', amount: 100, label: '100 כדורים' },
+  '15378': { type: 'points', amount: 100, label: '100 כדורים' },
+  '80616': { type: 'points', amount: 100, label: '100 כדורים' },
+  '48479': { type: 'points', amount: 100, label: '100 כדורים' },
+  '98091': { type: 'points', amount: 100, label: '100 כדורים' },
+  '44602': { type: 'points', amount: 100, label: '100 כדורים' },
+  '43613': { type: 'points', amount: 100, label: '100 כדורים' },
+  '47563': { type: 'points', amount: 100, label: '100 כדורים' },
+  '28044': { type: 'points', amount: 100, label: '100 כדורים' },
+  '98342': { type: 'points', amount: 100, label: '100 כדורים' },
+  '27221': { type: 'points', amount: 100, label: '100 כדורים' },
+  '88488': { type: 'points', amount: 100, label: '100 כדורים' },
+  // 10 קופונים: 20 מטבעות
+  '33566': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '51405': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '35750': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '90235': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '10539': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '82494': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '51683': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '47732': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '94024': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  '52793': { type: 'coins', amount: 20, label: '20 מטבעות' },
+  // 5 קופונים: 100 מטבעות
+  '61237': { type: 'coins', amount: 100, label: '100 מטבעות' },
+  '33174': { type: 'coins', amount: 100, label: '100 מטבעות' },
+  '13751': { type: 'coins', amount: 100, label: '100 מטבעות' },
+  '21298': { type: 'coins', amount: 100, label: '100 מטבעות' },
+  '72817': { type: 'coins', amount: 100, label: '100 מטבעות' },
+  // 20 קופונים: 3 גביעים לטבלה
+  '13422': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '39413': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '14967': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '93964': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '72307': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '71764': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '66583': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '27843': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '90236': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '55705': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '61362': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '70698': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '76458': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '51748': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '35076': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '58118': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '84387': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '78698': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '51734': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  '84989': { type: 'trophies', amount: 3, label: '3 גביעים לטבלה' },
+  // 3 קופונים: 300 כדורים
+  '92299': { type: 'points', amount: 300, label: '300 כדורים' },
+  '31422': { type: 'points', amount: 300, label: '300 כדורים' },
+  '66356': { type: 'points', amount: 300, label: '300 כדורים' },
+  // 2 קופונים: 150 כדורים ו-70 מטבעות
+  '24097': { type: 'combo', points: 150, coins: 70, label: '150 כדורים ו-70 מטבעות' },
+  '36366': { type: 'combo', points: 150, coins: 70, label: '150 כדורים ו-70 מטבעות' },
+};
 
 function toggleCouponPanel(forceState) {
   const panel = document.getElementById('couponPanel');
